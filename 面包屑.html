@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>CSS3圆形风格面包屑导航</title>
+    <link rel="stylesheet" type="text/css" href="http://css.h5course.cn/reset.css" />
+    <style type="text/css">
+        html, body {
+            height: 100%;
+            padding: 0 100px;
+            background-color: #59a386;
+        }
+        .title {
+            padding: 50px 0;
+            color: #77c2a5;
+            font-size: 25px;
+            font-weight: bold;
+        }
+        ul.breadcrumb {
+            display: inline-block;
+            margin-left: 50px;
+        }
+        /*实现每个导航项的基本样式*/
+        ul.breadcrumb li {
+            float: right;
+            padding: 5px;
+            margin: 3px 0 0 -50px;
+            background-color: #59a386;
+            border-radius: 50px;
+            transition: all 0.2s linear 0s;
+        }
+        ul.breadcrumb li a {
+            display: block;
+            overflow: hidden;
+            min-width: 50px;
+            width: 50px;
+            height: 50px;
+            padding: 0 33.33px 0 52px;
+            color: #509378;
+            background-color: #65ba99;
+            text-align: center;
+            line-height: 50px;
+            border-radius: 50px;
+            transition: all 0.2s linear 0s;
+            box-sizing: border-box;
+        }
+        /*控制每个导航项中文本的出现*/
+        ul.breadcrumb li a .text {
+            display: none;
+            opacity: 0;
+        }
+        ul.breadcrumb li a:hover {
+            width: 150px;
+            background-color: #77c2a5;
+        }
+        ul.breadcrumb li a:hover .text {
+            display: inline-block;
+            opacity: 1;
+        }
+        /*处理第一个导航项*/
+        ul.breadcrumb li:last-child a {
+            padding: 0;
+        }
+        ul.breadcrumb li:last-child:hover {
+            padding: 3px;
+            margin-top: 0;
+        }
+        ul.breadcrumb li:last-child:hover a {
+            width: 60px;
+            height: 60px;
+            line-height: 60px;
+        }
+    </style>
+</head>
+<body>
+    <h1 class="title">CSS3圆形风格面包屑导航</h1>
+    <ul class="breadcrumb">
+        <li>
+            <a href="#">
+                <span class="text icon-file">移动端</span>
+            </a>
+        </li>
+        <li>
+            <a href="#">
+                <span class="text icon-folder-open">JS</span>
+            </a>
+        </li>
+        <li>
+            <a href="#">
+                <span class="text icon-code">CSS3</span>
+            </a>
+        </li>
+        <li>
+            <a href="#">
+                <span class="text icon-beaker">HTML5</span>
+            </a>
+        </li>
+        <li>
+            <a href="#">
+                <span class="icon icon-home">HOME</span>
+            </a>
+        </li>
+    </ul>
+</body>
+</html>

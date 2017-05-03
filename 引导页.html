@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>引导页和闭包</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1.0, user-scalable=no"/>
+        <link rel="stylesheet" type="text/css" href="animate.css" />
+        <style type="text/css">
+        *{
+            margin:0;
+            padding:0;
+        }
+         html,body{
+            width: 100%;
+            height: 100%;
+            position:relative;
+         }
+         .wrapper{
+            width: 100%;
+            overflow: hidden;
+            height: 100%;
+         }
+         .container{
+            width:100%;
+            height:400%;
+            position:absolute;
+            left:0;
+            top:0;
+         }
+         .banner{
+            width: 100%;
+            height:25%;
+            text-align: center;
+            font-size:20px;
+            vertical-align: middle;
+         }
+         .banner p{
+            text-align: center;
+            line-height: 80px;
+         }
+         .banner:nth-child(1){
+            background: pink;
+            /*z-index:4;*/
+         }
+         .banner:nth-child(2){
+            background: yellow;
+            /*z-index:3;*/
+         }
+         .banner:nth-child(3){
+            background: green;
+            /*z-index:2;*/
+         }
+         .banner:nth-child(4){
+            background: red;
+            /*z-index:1;*/
+         }
+         .btn{
+            position:fixed;
+            width:30px;
+            bottom:10px;
+            left:50%;
+            margin-left:-15px;
+            border:none;
+            background:none;
+            font-size:20px;
+         }
+         
+         @keyframes moveTo{
+            from{
+                top:0;
+            }
+            to{
+                top:-100%;
+            }
+         }
+ 
+
+
+        </style>
+    </head>
+    <body>
+        <section class="wrapper">
+            <div class="container">
+                <div class="banner">
+                    <p class="nav1 animated">引导页引导页</p>
+                    <p>动画一</p>
+                </div>
+                <div class="banner">
+                    <p class="nav2 animated">引导页引导页</p>
+                    <p>动画二</p>
+                </div>
+                <div class="banner">
+                    <p class="nav3 animated">引导页引导页</p>
+                    <p>动画三</p>
+                </div>
+                <div class="banner">
+                    <p class="nav4 animated">引导页引导页</p>
+                    <p>动画四</p>
+                </div>
+            </div>
+        </section> 
+        <button class="btn animated flash infinite">︽</button>
+    </body>
+</html>
+<script type="text/javascript" src="jquery.min.js"></script>
+<script type="text/javascript" src="iscroll.js"></script>
+<script type="text/javascript">
+//闭包
+  /*  var len = document.getElementsByTagName("div").length;
+    for(var i=0; i<len; i++){
+        document.getElementsByTagName("div")[i].onclick = (function(n){
+            return function(){
+                 if(n == len-1){
+                     return false;
+                 }
+               document.getElementsByTagName("div")[n].style.animation = "moveTo 1s ease-in-out";
+               document.getElementsByTagName("div")[n].style.top = "100%";  
+            }
+        })(i)
+    }*/
+//iscroll
+    // var Iscroll = new IScroll(".wrapper");
+
+//触碰事件
+ var pageY,pageX,moveX,moveY;
+ var clientH=document.body.clientHeight;
+ var len = $(".banner").length;
+ var i=0;
+ $(".nav1").addClass("flash");
+    document.querySelectorAll(".container")[0].addEventListener("touchstart",function(event){
+        pageX = event.targetTouches[0].pageX;
+        pageY = event.targetTouches[0].pageY;
+    },false);
+    document.querySelectorAll(".container")[0].addEventListener("touchmove",function(event){
+        event.preventDefault();
+        moveX = event.targetTouches[0].pageX;
+        moveY = event.targetTouches[0].pageY;
+    },false);
+    document.querySelectorAll(".container")[0].addEventListener("touchend",function(event){
+        event.preventDefault();
+        var changeX = pageX-moveX;
+        var changeY = pageY-moveY;
+        if(changeY>0){
+            i++;
+            if(i>len-1){
+                i=len-1;
+                return;
+            }
+            $(".container").animate({"top":-i*clientH+"px"},"2s");
+            $(".banner").eq(i).siblings().find("p").css({
+               "animation":"none"
+            });
+        }else{
+            if(i==0){
+                i=0;
+                return;
+            }
+            i--;
+            $(".container").animate({"top":-i*clientH+"px"},"2s");
+            $(".banner").eq(i).siblings().find("p").css({
+               "animation":"none"
+            });
+        }
+        if(i==0){
+           $(".banner").eq(i).find("p").css({
+              "animation":"flash 1s ease-in-out .5s"
+           }); 
+       }else if(i==1){
+            $(".banner").eq(i).find("p").css({
+               "animation":"bounce 1s ease-in-out .5s"
+            });
+        }else if(i==2){
+            $(".banner").eq(i).find("p").css({
+               "animation":"bounceInLeft 1s ease-in-out .5s"
+            });
+        }else if(i==3){
+            $(".banner").eq(i).find("p").css({
+               "animation":"shake 1s ease-in-out .5s"
+            });
+        }
+        
+
+    },false);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    // 　function f1(){
+    // 　　　　var n=999;
+    // 　　　　nAdd=function(){n+=1}
+    // 　　　　function f2(){
+    // 　　　　　　alert(n);
+    // 　　　　}
+    // 　　　　return f2();
+    // 　　}
+    // 　　var result=f1();
+    // // 　　result(); // 999
+    // 　　nAdd(); 
+    // 　　result; // 1000
+    
+</script>

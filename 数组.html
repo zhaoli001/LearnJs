@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+    </head>
+    <body>
+
+    </body>
+</html>
+<script type="text/javascript">
+    var arr = ["aa","bb","aa","nn","pp","pp","aa"];
+    var custormNum = function (number) {
+        var SortNum = number.sort();
+        var len = number.length;
+        var obj = {};
+        for (var i=0; i<len; i++){
+            if(obj[number[i]]){
+                obj[number[i]]++;
+            }else{
+                obj[number[i]]=1;
+            }
+        }
+         return obj;
+    }
+    var sort = custormNum(arr);
+    for(var i in sort){
+        console.log("单词："+i+"出现了"+sort[i]+"次");
+    }
+</script>

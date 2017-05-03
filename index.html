@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+        <!-- <link rel="stylesheet" type="text/css" href="layer/layer.css" /> -->
+        <script type="text/javascript" src="http://www.ijquery.cn/js/jquery-1.7.2.min.js"></script>
+        <!-- <script type="text/javascript" src="http://www.ijquery.cn/js/jquery.placeholder.min.js"></script> -->
+        <!-- <script type="text/javascript" src="layer/layer.js"></script> -->
+       <!--  <script type="text/javascript">
+         $(function(){
+           if(!placeholderSupport()){   // 判断浏览器是否支持 placeholder
+               $('[placeholder]').focus(function() {
+                   var input = $(this);
+                   if (input.val() == input.attr('placeholder')) {
+                       input.val('');
+                       input.removeClass('placeholder');
+                   }
+               }).blur(function() {
+                   var input = $(this);
+                   if (input.val() == '' || input.val() == input.attr('placeholder')) {
+                       input.addClass('placeholder');
+                       input.val(input.attr('placeholder'));
+                   }
+               }).blur();
+           };
+         })
+         function placeholderSupport() {
+             return 'placeholder' in document.createElement('input');
+         }
+        </script> -->
+    </head>
+    <style type="text/css">
+        *{
+            margin:0;
+            padding:0;
+        }
+        .container{
+            width: 100%;
+            height: 100%;
+            display:flex;
+            flex-direction: column;
+        }
+        html,body{
+            width: 100%;
+            height: 100%;
+        }
+        /* header{
+            width: 100%;
+            height:50px;
+            background:#ccc;
+            position:fixed;
+            left:0;
+            top:0;
+            z-index:999;
+        }
+        header ul{
+            width: 100%;
+            height: 100%;
+        }
+        header ul li{
+            float:left;
+            width: 33.3%;
+            height: 100%;
+            text-align: center;
+        } */
+        #iscroll_box{
+            width: 100%;
+            overflow:hidden;
+        }
+        .content{
+            width: 100%;
+            padding-bottom:50px;
+        }
+        .content ul{
+            width: 100%;
+            height: 50px;
+            text-align: center;
+        }
+        .img_box{
+            float:left;
+            position:absolute;
+            top:50px;
+            left:0;
+        }
+        .img_box img{
+            width:50px;
+            height:50px;
+            -webkit-transition:all 0.6s;
+        } 
+        .img_box img:hover{
+            -webkit-transform:scale(2.0);
+        }
+
+
+    </style>
+
+    <body>
+        <div class="container">
+<!--            <header>
+    <ul>
+        <li>fgnhy</li>
+        <li>fgnhy</li>
+        <li>fgnhy</li>
+    </ul>
+</header>
+<div class="img_box">
+   <img src="ac_banner.jpg" alt="" />
+   <input type="text" placeholder="手机号"/>
+</div> -->
+
+           <section id="iscroll_box">
+               <div class="content">
+                  
+                   <ul>
+                       <li>fdghjkjkjdfhkvjdfvb</li>
+                   </ul>
+                   <ul>
+                       <li>fdghjkjkjdfhkvjdfvb</li>
+                   </ul>
+                   <ul>
+                       <li>fdghjkjkjdfhkvjdfvb</li>
+                   </ul>
+                   <ul>
+                       <li>fdghjkjkjdfhkvjdfvb</li>
+                   </ul>
+                   <ul>
+                       <li>fdghjkjkjdfhkvjdfvb</li>
+                   </ul>
+                   <ul>
+                       <li>fdghjkjkjdfhkvjdfvb</li>
+                   </ul>
+                   <ul>
+                       <li>fdghjkjkjdfhkvjdfvb</li>
+                   </ul>
+                   <ul>
+                       <li>fdghjkjkjdfhkvjdfvb</li>
+                   </ul>
+                   <ul>
+                       <li>fdghjkjkjdfhkvjdfvb</li>
+                   </ul>
+                   <ul>
+                       <li>fdghjkjkjdfhkvjdfvb</li>
+                   </ul>
+                   <ul>
+                       <li>fdghjkjkjdfhkvjdfvb</li>
+                   </ul>
+                   <ul>
+                       <li>fdghjkjkjdfhkvjdfvb</li>
+                   </ul>
+                   <ul>
+                       <li>fdghjkjkjdfhkvjdfvb</li>
+                   </ul>
+                   <ul>
+                       <li>fdghjkjkjdfhkvjdfvb</li>
+                   </ul>
+                   <ul>
+                       <li>fdghjkjkjdfhkvjdfvb</li>
+                   </ul>
+                   <ul>
+                       <li>fdghjkjkjdfhkvjdfvb</li>
+                   </ul>
+                   <ul>
+                       <li>fdghjkjkjdfhkvjdfvb</li>
+                   </ul>
+                   <ul>
+                       <li>fdghjkjkjdfhkvjdfvb</li>
+                   </ul>
+                   <ul>
+                       <li>fdghjkjkjdfhkvjdfvb</li>
+                   </ul>
+                   <ul>
+                       <li>fdghjkjkjdfhkvjdfvb</li>
+                   </ul>
+                   <ul>
+                       <li>fdghjkjkjdfhkvjdfvb</li>
+                   </ul>
+                   <ul>
+                       <li>fdghjkjkjdfhkvjdfvb</li>
+                   </ul>
+               </div>
+           </section>
+        </div>
+    </body>
+</html>
+<script type="text/javascript" src="iscroll.js"></script>
+
+<script type="text/javascript">
+  var  myScroll = new IScroll("#iscroll_box",{
+        //scrollY:true
+  }) 
+
+  /*layer.confirm('您是如何看待前端开发？', {
+    btn: ['重要','奇葩'] //按钮
+  }, function(){
+    layer.msg('的确很重要', {icon: 1});
+  }, function(){
+    layer.msg('也可以这样', {
+      time: 20000, //20s后自动关闭
+      btn: ['明白了', '知道了']
+    });
+  });*/
+</script>

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+</head>
+<body>
+
+</body>
+  <script src="http://apps.bdimg.com/libs/jquery/1.10.2/jquery.min.js"></script>
+<script type="text/javascript">
+// /*	console.log(("2016-09-15").replace(/-/g,""));
+
+
+
+// /*将ajax获得数据以参数形式传给外部函数*/
+// 	function draw(data) {
+// 	  console.log('drawing' + data);
+// 	}
+// 	function ajaxFn(callback) {
+// 	  $.getJSON('http://validate.jsontest.com/?json=%5BJSON-code-to-validate%5D', function (data) {
+// 	    callback(data);
+// 	  });
+// 	}
+
+// 	ajaxFn(function (response) {
+// 	  draw(response);
+// 	  var timer = setInterval(function () {
+// 	    ajaxFn(function (response){
+// 	      console.log('loop');
+// 	      draw(response);
+// 	    });
+// 	  }, 2000);
+// 	});
+
+// 	var num = [1,1,1,2,3,4,5];
+// 	function unique(arr){
+// 		var tmp = new Array();
+// 		for(var i in arr){
+// 			if(tmp.indexOf(arr[i])==-1){
+// 				tmp.push(arr[i]);
+// 			}
+// 		}
+// 		return tmp;
+// 	}
+// 	unique(num);
+	
+// 	var num=[2,1,3,5,4,9]
+//    num.sort();
+//    console.log(num.join());
+
+// 	       var str = "hzgdshfvgksdjhvjfhv";
+// 	       function numInstring(str){
+// 	           str=str.replace(/ /ig,"");
+// 	           var strArr=str.split("");
+// 	           var result=[],beforeLength,afterLength,reg;
+// 	           for(var i=0;i<strArr.length;i++){
+// 	               if(str.indexOf(strArr[i])!=-1){
+// 	                   beforeLength=str.length;
+// 	                   reg=new RegExp(strArr[i],"ig");
+// 	                   str=str.replace(reg,"");
+// 	                   afterLength=str.length;
+// 	                   result.push(strArr[i]+":"+(beforeLength-afterLength));
+// 	               }
+// 	           }
+// 	           return result;
+// 	       }
+// 	       console.log(numInstring(str));*/
+
+
+function changeDate(cellvalue){
+	return new Date(parseInt(cellvalue) * 1000/1000).toLocaleString('chinese',{hour12:false}).replace("/","-").replace("/","-");
+}
+	    console.log(changeDate(101213251654565))   
+</script>
+</html>

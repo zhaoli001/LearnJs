@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+    </head>
+    <!-- <script type = "text/javascript" >
+    // 找到适合浏览器的全屏方法
+            function launchFullScreen(element) {
+             if(element.requestFullScreen) {
+              element.requestFullScreen();
+             }else if(element.mozRequestFullScreen) { //兼容moz
+              element.mozRequestFullScreen();
+             }else if(element.webkitRequestFullScreen) { //兼容webkit
+              element.webkitRequestFullScreen();
+             }
+            }
+    //退出全屏
+            function exitFullscreen() {
+             if(document.exitFullscreen) {
+              document.exitFullscreen();
+             }else if(document.mozCancelFullScreen) { //兼容moz
+              document.mozCancelFullScreen();
+             }else if(document.webkitExitFullscreen) { //兼容webkit
+              document.webkitExitFullscreen();
+             }
+            }
+    </script> -->
+    <style type="text/css">
+        html:-moz-full-screen { 
+            background: red; 
+        }
+        html:-webkit-full-screen { 
+            background: green; 
+        }
+        html:fullscreen { 
+            background: red; 
+        }
+    </style>
+    <body>
+<!--     <button onclick="launchFullScreen(document.documentElement);">点击全屏</button>
+    <button onclick="exitFullscreen();">退出全屏</button>
+    
+    <button onclick="launchFullScreen(document.getElementById('box'));">点击让下面的div全屏</button>
+ -->    <div id="box" style="width: 200px;height: 200px;background: #ccc;">123456</div>
+    
+    <button id="button">点击</button>
+
+    </body>
+</html>
+<script type="text/javascript">
+// alert(screen.orientation.type);
+// alert(screen.orientation.angle);
+    document.getElementById("button").addEventListener("click", function() {
+        if(document.documentElement.webkitRequestFullScreen) {
+         document.documentElement.webkitRequestFullScreen();
+        }
+      screen.orientation.lock("portrait-secondary");
+     }, false);
+</script>

@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+        <script type="text/javascript" src="http://www.ijquery.cn/js/jquery-1.7.2.min.js"></script>
+        <title>PC端的自定义滚轮</title>
+    </head>
+    <style type="text/css">
+        *{
+            margin:0;
+            padding:0;
+        }
+        html,body{
+            width: 100%;
+            height: 100%;
+        }
+        #wrap{
+            width:200px;
+            height:150px;
+            margin:0 auto;
+        }
+        #see-box{
+            float:left;
+            overflow:auto;
+            width: 180px;
+            height: 150px;
+            background:pink;
+        }
+        #see-box ul li{
+            width: 100%;
+            line-height: 25px;
+            text-align:center;            
+        }
+        #scroll-box{
+            position:relative;
+            width: 20px;
+            height: 150px;
+            float:right;
+            background:#ccc;
+        }
+        #scroll-ti{
+            position:absolute;
+            width: 20px;
+            background:yellow;
+            cursor:pointer;
+        }
+    </style>
+    <body>
+        <div class="container">
+            <header>
+                
+            </header>
+            <section id='wrap'>
+                <div id="see-box">
+                    <ul id="ul">
+                        <li>自定义滚动条自定义滚动条</li>
+                        <li>自定义滚动条自定义滚动条</li>
+                        <li>自定义滚动条自定义滚动条</li>
+                        <li>自定义滚动条自定义滚动条</li>
+                        <li>自定义滚动条自定义滚动条</li>
+                        <li>自定义滚动条自定义滚动条</li>
+                        <li>自定义滚动条自定义滚动条</li>
+                        <li>自定义滚动条自定义滚动条</li>
+                        <li>自定义滚动条自定义滚动条</li>
+                        <li>自定义滚动条自定义滚动条</li>
+                        <li>自定义滚动条自定义滚动条</li>
+                        <li>自定义滚动条自定义滚动条</li>
+                        <li>自定义滚动条自定义滚动条</li>
+                    </ul>
+                </div>
+                <div id="scroll-box">
+                    <div id="scroll-ti">
+                        
+                    </div>
+                </div>
+            </section>
+            <footer>
+                
+            </footer>
+        </div>
+    </body>
+</html>
+<script type="text/javascript">
+/*
+    * 计算滚动条的高度：根据滚动块的实际高度去控制滚动条的高度：滚动块的高度/可视区的高度=滚动区的高度/滚动条的高度
+    * 鼠标拖动时的坐标位置：滚动条的滚动距离=拖动后鼠标变化的Y的值-点击时鼠标获取的Y值
+    * ……
+ */
+      var bx = document.getElementById("see-box"),
+        cn = document.getElementById("ul"),
+        bs = document.getElementById("scroll-box"),
+        sc = document.getElementById("scroll-ti"),
+
+        oldY = 0,      //鼠标初次点击的Y轴坐标
+        newY = 0,      // 鼠标拖动时的Y轴坐标
+        nowY = 0,      // 鼠标拖动时滚动条C距父级顶部的高度
+        maxY = 0,      // 拖动的最大极限值
+        nowDisY = 0,   // 点击滚动条C时距父级顶部的高度
+
+        bxHeight = bx.clientHeight,  // 可视区A高度
+        bsHeight = bs.clientHeight, //  滚动区D高度
+        cnHeight = cn.offsetHeight;  // 滚动块B的高度
+
+        // 根据滚动块B实际内容高度控制滚动条C的高度
+        scHeight = bxHeight/cnHeight * bxHeight;
+        sc.style.height = scHeight + "px";  
+
+        // 当滚动块B实际高度小于可视区时，滚动条隐藏
+        if (cnHeight < bxHeight) {
+            bs.style.display = "none";
+        };
+
+        sc.onmousedown = function(e) {
+            oldY = e.clientY;
+            nowDisY = sc.offsetTop;         // 当前的滚动条C的top值
+            e.preventDefault();
+            document.onmousemove = function(e) {
+                console.log('l')
+                newY = e.clientY;
+                nowY = nowDisY + newY - oldY;  // 拖动后的滚动条C的top值
+                maxY = bsHeight - scHeight;    // 设置滚动条top极限值
+
+                if (nowY <= 0) {
+                    nowY = 0;
+                };
+                if (nowY >= maxY) {
+                    nowY = maxY;
+                };
+
+            bx.scrollTop = nowY/maxY * (cnHeight - bxHeight);  // 设置滚动块B的scrollTop值
+            console.log(nowY);
+            sc.style.top = nowY + "px";
+            }
+        }
+        document.onmouseup = function() {
+            document.onmousemove = null;   
+        }
+</script>

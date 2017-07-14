@@ -5,13 +5,20 @@
 	<title></title>
 </head>
 <body>
-
+    <select name="" id="">
+        <option value="11111">111111</option>
+        <option value="22222">22222</option>
+        <option value="3333">3333</option>
+        <option value="444">444</option>
+    </select>
 </body>
   <script src="http://apps.bdimg.com/libs/jquery/1.10.2/jquery.min.js"></script>
 <script type="text/javascript">
 // /*	console.log(("2016-09-15").replace(/-/g,""));
-
-
+        console.log($("select").find("option").length);
+        //$("select").val("3333").attr("selected",true);
+     $("select").find("option[value='3333']").attr("selected",true);
+    console.log(new Date().getDay());
 
 // /*将ajax获得数据以参数形式传给外部函数*/
 // 	function draw(data) {
@@ -71,6 +78,26 @@
 function changeDate(cellvalue){
 	return new Date(parseInt(cellvalue) * 1000/1000).toLocaleString('chinese',{hour12:false}).replace("/","-").replace("/","-");
 }
-	    console.log(changeDate(101213251654565))   
+	console.log(changeDate(121213251654565));
+
+console.log(new Date(parseInt(121213251654565) * 1000/1000).toLocaleString('chinese',{hour12:false}));
+
+
+
+
+
+
+
+var arrNum = ["010","020","021","022","024","027","028","029","0311","0351","0411","0471","0532","0571","0573","0731","0755","0852","0899","1852","1853"];
+var arrName = ["北京","广州","上海","天津","沈阳","武汉","成都","西安","石家庄","太原","大连","呼和浩特","青岛","杭州","嘉义","长沙","深圳","遵义","三亚","香港","澳门"];
+    console.log(arrNum.indexOf(029))
+
+    //hour=Number(hour);
+    var hour = 11111;
+            var Hours = parseInt(hour/3600);
+            var Minutes = parseInt((hour-(Hours*3600))/60);
+
+            console.log(Hours+"小时"+Minutes+"分钟");
+
 </script>
 </html>

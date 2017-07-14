@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+    </head>
+    <style type="text/css">
+        .wapper{
+            width: 500px;
+            height: 800px;
+            background:url(icon.png) no-repeat;
+            background-size:contain;
+        }
+    </style>
+    <script type="text/javascript">
+    function pp(){
+      var p = new Promise(function(resolve,reject){
+            setTimeout(function(){
+                console.log('执行完');
+                resolve("ppppp")
+            },200)
+        })
+        return p;  
+    }
+
+    function pp1(){
+      var p = new Promise(function(resolve,reject){
+            setTimeout(function(){
+                console.log('gggggggggggggggggggggg');
+                resolve("pppppooooooooo")
+            },200)
+        })
+        return p;  
+    }
+    pp()
+    .then(function(data){
+        console.log(data);
+        return pp1();
+    })
+    .then(function(data){
+        console.log(data);
+        return "jhgvfhdjvhjb";
+    })
+        
+    </script>
+    <body>
+        <div class="wapper">
+            
+        </div>
+    </body>
+</html>

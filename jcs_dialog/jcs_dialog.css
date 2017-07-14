@@ -1,0 +1,61 @@
+*{margin:0;padding:0;-webkit-box-sizing:border-box;box-sizing:border-box;}body,html{width:100%;height:100%;}
+/**
+ * 加载动画
+ * @type {[type]}
+ */
+.jcs_dialog{background:rgba(40,40,40,1);width:100%;height:100%;position:fixed;z-index:199999999999;
+	left:0;top:0;}
+.j_inner{position:absolute;left:50%;top:50%;-webkit-transform:translate3d(-50%,-50%,0);
+	transform:translate3d(-50%,-50%,0);z-index:8;width:71px;height:76px;}
+.j_inner img{width:100%;height:auto;float: left;position: absolute;left:0;
+	top:0;z-index: 3;}
+.j_move{display:inline-block;float:left;width:100%;height:0px;background:url('cai2.png') no-repeat;
+	background-size:70px 77px;background-position:0 -76px;position: absolute;left:0px;bottom:0;
+	z-index:10;-webkit-animation: flash infinite 2s;animation: flash infinite 2s;
+	-webkit-animation-fill-mode:both;animation-fill-mode:both;}
+/**
+ * 弹出框
+ * @type {[type]}
+ */
+.maskz{width:100%;height:100%;background:rgba(0,0,0,0.6);position: fixed;left:0;top:0;}
+.jcs_decision{width:100%;height:140px;background:#282828;text-align:center;line-height:45px;position:absolute;
+	-webkit-animation:heightt 0.5s;animation:heightt 0.5s;z-index:99999;overflow:hidden;}
+.jcs_decision p{height:45px;background:#333333;color:#ddd;font-size:15px;}
+.jcs_decision .jcs_decision_tit{margin-bottom:4px;}
+.jcs_decision .jcs_decision_true{margin-bottom:1px;color:#ffdf1b;}
+.maskz .bottom{bottom:0;}
+
+.maskz .center{width:80%;border-radius:10px;left:50%;top:50%;margin-left:-40%;margin-top:-70px;
+	overflow:hidden;padding:0 10px;-webkit-animation:scales 0.5s;animation:scales 0.5s;overflow:hidden;}
+	.maskz .center .jcs_decision_tit{font-size:16px;background:#282828;}
+	.maskz .center .jcs_decision_true,.center .jcs_decision_false{
+		min-width:40px;height:35px;float:left;position:absolute;bottom:15px;line-height:35px;
+		border-radius:3px;padding:0 5px}
+	.maskz .center .jcs_decision_true{left:20%;}
+	.maskz .center .jcs_decision_false{right:20%;}
+/**
+ * register
+ */
+.jcs_register{width:80%;left:50%;top:50%;-webkit-transform:translate3d(-50%,-50%,0);
+	transform:translate3d(-50%,-50%,0);overflow:hidden;height:auto;background:#ffffff;
+	-webkit-animation:hei 0.5s;animation:hei 0.5s;max-width:395px;overflow:hidden;}
+	.jcs_register p{background:#fff;width:90%;margin-left:5%;margin:10px 0 10px 5%;
+		border:1px solid #eee;overflow:hidden;}
+	.jcs_register p input{width:80%;height:100%;border:none;outline:none;padding-left:5px;float:left;}
+	.jcs_register p .clean{width:22px;float:right;font-size:20px;color:#ccc;padding-right:10px;
+		text-align:right;cursor:pointer;}
+.jcs_register .jcs_decision_submit{color:#ddd;float:left;background:#fff;background:#3f89ec;
+	color:#fff;height:40px;line-height:35px;margin:10px 0 20px 5%;}
+.jcs_register .tit{color:#000;background:#eee;font-size:18px;text-align:left;height:60px;
+	cursor:move;line-height:60px;}
+.jcs_register .tit .log{width:36px;margin:12px 8px 0 10px;float:left;}
+.jcs_register .tit span{float:left;cursor:pointer;}
+.jcs_register .tit .reg-exit{float:right;font-size:35px;color:#ccc;margin-right:10px;line-height:50px;}
+
+
+@keyframes heightt{from{height:0;}to{height:140px;}}
+@-webkit-keyframes heightt{from{height:0;}to{height:140px;}}
+@keyframes scales{from{-webkit-transform:scale(0);transform:scale(0);}
+	to{-webkit-transform:scale(1);transform:scale(1);}}
+@-webkit-keyframes scales{from{-webkit-transform:scale(0);transform:scale(0);}
+	to{-webkit-transform:scale(1);transform:scale(1);}}

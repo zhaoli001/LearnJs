@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<link rel="stylesheet" href="jcs_dialog.css">
+	<title>Document</title>
+	<script src="jquery-1.7.2.min.js"></script>
+	<script src="jcs_dialog.js"></script>
+	<style>
+		button{margin:20px 10px;}
+	</style>
+</head>
+<body>
+	<button class="a">aaa</button>
+	<button class="b">bbb</button>
+	<button class="c">ccc</button>
+	<!-- <div class="maskz">
+		<div class="jcs_decision jcs_register">
+			<div class="tit"><img class="log" src="cai2.png" alt=""><span>欢迎注册</span><span class="reg-exit">×</span>
+			</div>
+			<p class="y-msg"><input type="text" name="username" placeholder="请输入手机号"><span class="clean">×</span></p>
+			<p class="jcs_decision_submit">注册</p>
+		</div>
+	</div> -->
+</body>
+<script>
+	var loading = new Loading();
+
+		loading.openL();
+	
+	$('.a').on('click',function(){
+		DialogZ.init({
+			msg: "您确认要执行此操作吗？",
+			btn:['确定','取消'],
+			position: 'bottom',
+			trueCallback:function(){
+				console.log(999)
+			},
+			falseCallback:function(){
+				console.log(888)
+			}
+		})
+	})	
+	$('.b').on('click',function(){
+		DialogZ.init({
+			msg: "您确认要执行此操作吗？",
+			btn:['确定','取消'],
+			position: 'center',
+			trueCallback:function(){
+				console.log(999)
+			},
+			falseCallback:function(){
+				console.log(888)
+			}
+		})
+	})	
+	DialogZ.reg.init({
+		tit: '欢迎大瓜注册',
+		placeholder:{
+			tel:'请输入手机号',
+			nickname:'请创建昵称',
+			pwd:'设置密码',
+			pwdtoo:'确认密码'
+		},
+		btnMsg:'登录',
+		logpic: 'cai2.png',
+		move:true,
+		submitCallback:function(){
+			alerts()
+		}
+	});
+	function alerts(){
+		alert(999)
+	}
+
+</script>
+</html>

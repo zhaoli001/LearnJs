@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>树状菜单</title>
+        <!-- <link rel="stylesheet" type="text/css" href="css/demo.css" /> -->
+        <link rel="stylesheet" type="text/css" href="css/zTreeStyle/zTreeStyle.css" />
+        <style type="text/css">
+            .ztree li span.button.add {
+                margin-left:2px;
+                margin-right: -1px;
+                background-position:-144px 0;
+                vertical-align:top; 
+                *vertical-align:middle;
+            }
+        </style>
+        <script type="text/javascript" src="../jquery.min.js"></script>
+        <script type="text/javascript" src="../jquery.base64.js"></script>
+      <!--   <script type="text/javascript" src="js/jquery.ztree.core.min.js"></script>
+        <script type="text/javascript" src="js/jquery.ztree.excheck.min.js"></script>
+        <script type="text/javascript" src="js/jquery.ztree.exedit.min.js"></script> -->
+        <script type="text/javascript" src="js/jquery.ztree.all.min.js"></script>
+        <script type="text/javascript">
+            var zNodes=[
+                {
+                    'name':'菜单1',
+                    'id':1,
+                    'open':true,
+                    'checked':false,
+                    'children':[
+                        {
+                            'name':'菜单1——1,index.html',
+                            'id':2,
+                            'checked':false
+                        },
+                        {
+                            'name':'菜单1——2,ppp.html',
+                            'id':3,
+                            'checked':false
+                        },
+                        {
+                            'name':'菜单1——3,ooo.html',
+                            'id':4,
+                            'checked':false
+                        }
+                    ]
+                },
+                {
+                    'name':'菜单2',
+                    'open':true,
+                    'id':5,
+                    'checked':false,
+                    'children':[
+                        {
+                            'name':'菜单2——1,iii.html',
+                            'checked':false,
+                            'id':6,
+                            'open':true
+                        },
+                        {
+                            'name':'菜单2——2,uuu.html',
+                            'id':7,
+                            'checked':false
+                        },
+                        {
+                            'name':'菜单2——3,yyy.html',
+                            'id':8,
+                            'checked':false
+                        }
+                    ]
+                },
+                {
+                    'name':'菜单3',
+                    'open':true,
+                    'id':9,
+                    'checked':false,
+                    'children':[
+                        {
+                            'name':'菜单3——1',
+                            'ename':'rrr.html',
+                            'checked':false,
+                            'id':10,
+                            'open':true
+                        },
+                        {
+                            'name':'菜单3——2,eee.html',
+                            'id':11,
+                            'checked':false
+                        },
+                        {
+                            'name':'菜单3——3,www.html',
+                            'id':12,
+                            'checked':false
+                        }
+                    ]
+                }
+            ]
+
+
+
+            var setting = {
+                check: {
+                    enable: true
+                },
+                view:{
+                    addHoverDom: addHoverDom,
+                    removeHoverDom: removeHoverDom,
+                    addDiyDom:addDiyDom,
+                    selectedMulti: false
+                },
+                edit: {
+                    enable: true,
+                    showRemoveBtn: true,
+                    showRenameBtn: true
+                },
+                data: {
+                    key: {
+                        name: "name"
+                    },
+                    simpleData: {
+                        enable: true
+                    }
+                },
+                callback: {
+                    beforeDrag: beforeDrag,
+                    beforeDrop: beforeDrop,
+                    onRename: onRename,
+                    onDrop:onDrop
+                }
+            };
+
+            $(document).ready(function(){
+                $.fn.zTree.init($("#treeDemo"),setting,zNodes)
+            })
+
+            function beforeDrag(treeId, treeNodes) {
+                for (var i=0,l=treeNodes.length; i<l; i++) {
+                        if (treeNodes[i].drag === false) {
+                            return false;
+                        }
+                    }
+                    return true;
+            }
+            function beforeDrop(treeId, treeNodes, targetNode, moveType) {
+                return targetNode ? targetNode.drop !== false : true;
+            }
+
+            var newCount = 1;
+            function addHoverDom(treeId, treeNode) {
+                if(treeNode.level){
+                    return false;
+                }else{
+                    var sObj = $("#" + treeNode.tId + "_span");
+                    if (treeNode.editNameFlag || $("#addBtn_"+treeNode.tId).length>0) return;
+                    var addStr = "<span class='button add' id='addBtn_" + treeNode.tId
+                        + "' title='add node' onfocus='this.blur();'></span>";
+                    sObj.after(addStr);
+                    var btn = $("#addBtn_"+treeNode.tId);
+                    if (btn) btn.bind("click", function(){
+                        var zTree = $.fn.zTree.getZTreeObj("treeDemo");
+                        zTree.addNodes(treeNode, {id:(100 + newCount), pId:treeNode.id, name:"new node" + (newCount++)});
+                        console.log(treeNode);
+                        return false;
+                    });
+                }
+            };
+            function removeHoverDom(treeId, treeNode) {
+                $("#addBtn_"+treeNode.tId).unbind().remove();
+            };
+            function onRename(event, treeId, treeNode, isCancel){
+                /*
+                   name:节点名称
+                   level：节点级别（越大级别越小）
+                    parentTId:查看是否为父节点（父节点为空）
+                    tId：节点标识
+                 */
+                console.log(treeNode.id + ", " + treeNode.name);
+                return true;
+            }
+
+            function onDrop(event, treeId, treeNodes, targetNode, moveType){
+                if(moveType=="inner"){
+                    alert("对不起，该菜单无第三级,请重新排序！");
+                    $.fn.zTree.init($("#treeDemo"),setting,zNodes)
+                }else{
+                    if(targetNode!==null){
+                        console.log(targetNode.name+"------"+moveType); 
+                    }
+                }
+            }
+
+
+            function addDiyDom(treeId, treeNode) {
+                if (treeNode.parentNode && treeNode.parentNode.id!=2) return;
+                var aObj = $("#" + treeNode.tId + "_a");
+
+                // if (treeNode.id == 21) {
+                //     var editStr = "<span class='demoIcon' id='diyBtn_" +treeNode.id+ "' title='"+treeNode.name+"' onfocus='this.blur();'><span class='button icon01'></span></span>";
+                //     aObj.append(editStr);
+                //     var btn = $("#diyBtn_"+treeNode.id);
+                //     if (btn) btn.bind("click", function(){alert("diy Button for " + treeNode.name);});
+                // } else if (treeNode.id == 22) {
+                //     var editStr = "<span class='demoIcon' id='diyBtn_" +treeNode.id+ "' title='"+treeNode.name+"' onfocus='this.blur();'><span class='button icon02'></span></span>";
+                //     aObj.after(editStr);
+                //     var btn = $("#diyBtn_"+treeNode.id);
+                //     if (btn) btn.bind("click", function(){alert("diy Button for " + treeNode.name);});
+                // } else if (treeNode.id == 23) {
+                //     var editStr = "<select class='selDemo' id='diyBtn_" +treeNode.id+ "'><option value=1>1</option><option value=2>2</option><option value=3>3</option></select>";
+                //     aObj.after(editStr);
+                //     var btn = $("#diyBtn_"+treeNode.id);
+                //     if (btn) btn.bind("change", function(){alert("diy Select value="+btn.attr("value")+" for " + treeNode.name);});
+                // } else if (treeNode.id == 24) {
+                //     var editStr = "<span id='diyBtn_" +treeNode.id+ "'>Text Demo...</span>";
+                //     aObj.after(editStr);
+                // } else if (treeNode.id == 25) {
+                //     var editStr = "<a id='diyBtn1_" +treeNode.id+ "' onclick='alert(1);return false;'>链接1</a>" +
+                //         "<a id='diyBtn2_" +treeNode.id+ "' onclick='alert(2);return false;'>链接2</a>";
+                //     aObj.after(editStr);
+                // }
+            }
+            
+        </script>
+    </head>
+    <body>
+        <div class="left">
+            <ul class="ztree" id="treeDemo">
+                
+            </ul>
+        </div>
+    </body>
+</html>

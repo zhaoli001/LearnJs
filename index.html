@@ -64,7 +64,7 @@
             height: 100%;
             text-align: center;
         } */
-        #iscroll_box{
+       /* #iscroll_box{
             width: 100%;
             overflow:hidden;
         }
@@ -90,9 +90,31 @@
         } 
         .img_box img:hover{
             -webkit-transform:scale(2.0);
-        }
+        }*/
 
-
+      table {
+          margin:0 auto; 
+          border-collapse:collapse;
+      }
+      thead {
+          background:#CCCCCC;
+          display:block;
+      }
+      tbody{
+          height:100px;
+          overflow-y:scroll;
+          display:block;
+      }
+      .wt40{
+          width:300px;
+          min-width:300px;
+          max-width:300px;
+      }
+      .wt50{
+          width:450px;
+          min-width:450px;
+          max-width:450px;
+      }
     </style>
 
     <body>
@@ -109,7 +131,7 @@
    <input type="text" placeholder="手机号"/>
 </div> -->
 
-           <section id="iscroll_box">
+           <!-- <section id="iscroll_box">
                <div class="content">
                   
                    <ul>
@@ -179,13 +201,80 @@
                        <li>fdghjkjkjdfhkvjdfvb</li>
                    </ul>
                </div>
-           </section>
+           </section> -->
+
+           <table class="tablediv" id="myTable" border="1"> 
+        <thead>
+          <tr>
+            <td class="wt40">111asdasdassd</td>
+            <td class="wt50">222asdsa</td>
+          </tr> 
+        </thead>
+        <tbody id="tb">
+          <tr>
+            <td class="wt40">aaaaaaa23423d</td>
+            <td class="wt50">bbbbb23w23sd</td>
+          </tr>
+          <tr>
+            <td class="wt40">fdfffffffffffffsgdds</td>
+            <td class="wt50">bbbbbbb sd</td>
+          </tr>
+          <tr>
+            <td class="wt40">aaaaaaa sd</td>
+            <td class="wt50">bbbbbbb sd</td>
+          </tr>
+          <tr>
+            <td class="wt40">aaaaaaa sd</td>
+            <td class="wt50">bbbbbbb sd</td>
+          </tr> 
+          <tr>
+            <td class="wt40">aaaaaaa sd</td>
+            <td class="wt50">bbbbbbb sd</td>
+          </tr> 
+          <tr>
+            <td class="wt40">aaaaaaa sd</td>
+            <td class="wt50">bbbbbbb sd</td>
+          </tr> 
+          <tr>
+            <td class="wt40">aaaaaaa sd</td>
+            <td class="wt50">bbbbbbb sd</td>
+          </tr> 
+          <tr>
+            <td class="wt40">aaaaaaa sd</td>
+            <td class="wt50">bbbbbbb sd</td>
+          </tr> 
+          <tr>
+            <td class="wt40">aaaaaaa sd</td>
+            <td class="wt50">bbbbbbb sd</td>
+          </tr> 
+          <tr>
+            <td class="wt40">aaaaaaa sd</td>
+            <td class="wt50">bbbbbbb sd</td>
+          </tr> 
+          <tr>
+            <td class="wt40">aaaaaaa sd</td>
+            <td class="wt50">bbbbbbb sd</td>
+          </tr> 
+        </tbody>
+      </table>
         </div>
     </body>
 </html>
 <script type="text/javascript" src="iscroll.js"></script>
-
 <script type="text/javascript">
+    // console.log(("2017-09-09").join("-"));
+
+
+    $.ajax({
+        url:"http://119.254.118.241:7765/driverlogcas/orbit?driverphone=18004853366&date=20170601&minTime=05:00:00&maxTime=11:00:00",
+        dataType:"json",
+        success:function(data){
+            console.log(data);
+        }
+    })
+</script>
+
+<!-- <script type="text/javascript">
   var  myScroll = new IScroll("#iscroll_box",{
         //scrollY:true
   }) 
@@ -200,4 +289,4 @@
       btn: ['明白了', '知道了']
     });
   });*/
-</script>
+</script> -->

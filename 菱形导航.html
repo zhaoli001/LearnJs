@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>css样式</title>
+	<style type="text/css">
+		.box li{
+		  position:relative;
+		  width:70px;
+		  height:25px;
+		  margin-bottom:10px;
+		  text-align:center;
+		  line-height:25px;
+		  list-style:none;
+		  float:left;
+		}
+		.box li::after{
+		  content:"";
+		  position:absolute;
+		  border:1px solid green;
+		  border-radius:5px;
+		  left:0;
+		  top:0;
+		  right:0;
+		  bottom:0;
+		  z-index:-1;
+		  background:#ccc;
+		  transform:skewX(-25deg);
+		  /*梯形
+		  -webkit-transform:perspective(0.5em) rotateX(5deg);
+           -webkit-transform-origin:bottom;*/
+		}
+		.box li:hover::after{
+		  background:red;
+		}
+	</style>
+</head>
+<body>
+	<div class="box">
+	    <ul>
+	      <li>page1</li>
+	      <li>page2</li>
+	      <li>page3</li>
+	      <li>page4</li>
+	      <li>page5</li>
+	    </ul>
+	  </div>
+</body>
+</html>

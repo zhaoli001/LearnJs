@@ -130,11 +130,13 @@
     document.querySelectorAll(".container")[0].addEventListener("touchstart",function(event){
         pageX = event.targetTouches[0].pageX;
         pageY = event.targetTouches[0].pageY;
+        console.log(pageY);
     },false);
     document.querySelectorAll(".container")[0].addEventListener("touchmove",function(event){
         event.preventDefault();
         moveX = event.targetTouches[0].pageX;
         moveY = event.targetTouches[0].pageY;
+        console.log(moveY)
     },false);
     document.querySelectorAll(".container")[0].addEventListener("touchend",function(event){
         event.preventDefault();

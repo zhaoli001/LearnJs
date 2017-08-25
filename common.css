@@ -1,0 +1,335 @@
+body,
+div,
+dl,
+dt,
+dd,
+ul,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+pre,
+form,
+fieldset,
+input,
+textarea,
+p,
+blockquote,
+th,
+td,
+span,
+p {
+  margin: 0;
+  padding: 0;
+}
+* {
+  padding: 0;
+  margin: 0;
+}
+body {
+  font-family: 'Microsoft Yahei', helvetica, arial;
+  -webkit-text-size-adjust: none;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  color: #404040;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+th,
+td {
+  text-align: center;
+  vertical-align: top;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-size: 100%;
+  font-weight: 400;
+}
+fieldset,
+img {
+  border: 0;
+}
+ul {
+  list-style: none;
+}
+input,
+button,
+select {
+  font-size: 100%;
+  border-radius: 0;
+  -webkit-appearance: none;
+  border: none;
+  outline: none;
+  font-family: "Microsoft Yahei";
+  background: none;
+}
+ins,
+a {
+  text-decoration: none;
+}
+a:hover,
+a:active,
+a:visited {
+  text-decoration: none;
+  cursor: pointer;
+}
+a:focus {
+  outline: none;
+}
+i {
+  font-style: normal;
+}
+*:-moz-placeholder {
+  color: #a5a4a4;
+}
+*:-ms-input-placeholder {
+  color: #a5a4a4;
+}
+*::-webkit-input-placeholder {
+  color: #a5a4a4;
+}
+html {
+  font: 14px/24px Helvetica, Arial, sans-serif !important;
+}
+html,
+body {
+  width: 100%;
+  height: 100%;
+}
+img {
+  display: block;
+}
+strong {
+  font-weight: normal;
+}
+section {
+  width: 100%;
+  height: 100%;
+}
+@media screen and (min-width: 320px) {
+  html {
+    font-size: 312.5%!important;
+  }
+}
+@media screen and (min-width: 360px) {
+  html {
+    font-size: 351.5625%!important;
+  }
+}
+@media screen and (min-width: 375px) {
+  html {
+    font-size: 366.211%!important;
+  }
+}
+@media screen and (min-width: 400px) {
+  html {
+    font-size: 390.625%!important;
+  }
+}
+@media screen and (min-width: 440px) {
+  html {
+    font-size: 429.6875%!important;
+  }
+}
+@media screen and (min-width: 480px) {
+  html {
+    font-size: 468.75%!important;
+  }
+}
+@media screen and (min-width: 520px) {
+  html {
+    font-size: 507.8125%!important;
+  }
+}
+@media screen and (min-width: 560px) {
+  html {
+    font-size: 546.875%!important;
+  }
+}
+@media screen and (min-width: 600px) {
+  html {
+    font-size: 585.9375%!important;
+  }
+}
+@media screen and (min-width: 640px) {
+  html {
+    font-size: 625%!important;
+  }
+}
+@media screen and (min-width: 680px) {
+  html {
+    font-size: 664.0625%!important;
+  }
+}
+@media screen and (min-width: 720px) {
+  html {
+    font-size: 703.125%!important;
+  }
+}
+@media screen and (min-width: 750px) {
+  html {
+    font-size: 732.422%!important;
+  }
+}
+@media screen and (min-width: 760px) {
+  html {
+    font-size: 742.1875%!important;
+  }
+}
+@media screen and (min-width: 800px) {
+  html {
+    font-size: 781.25%!important;
+  }
+}
+@media screen and (min-width: 960px) {
+  html {
+    font-size: 937.5%!important;
+  }
+}
+@media screen and (min-width: 1136px) {
+  html {
+    font-size: 1109.375%!important;
+  }
+}
+@media screen and (min-width: 1334px) {
+  html {
+    font-size: 1302.734375%!important;
+  }
+}
+@media screen and (min-width: 1920px) {
+  html {
+    font-size: 1875%!important;
+  }
+}
+/** 清除内外边距 **/
+body,
+div,
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+blockquote,
+dl,
+dt,
+dd,
+ul,
+ol,
+li,
+pre,
+form,
+fieldset,
+legend,
+button,
+input,
+textarea,
+table,
+th,
+td {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+html,
+body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+body,
+button,
+input,
+select,
+textarea {
+  font-family: Arial, 'Microsoft Yahei', "宋体", sans-serif;
+}
+/*h1, h2, h3, h4, h5, h6 { font-size: 100%; }*/
+address,
+cite,
+em,
+i {
+  font-style: normal;
+}
+/* 将斜体扶正 */
+/*small { font-size: 12px; } /* 小于 12px 的中文很难阅读，让 small 正常化 */
+/** 重置列表元素 **/
+li {
+  list-style: none;
+}
+/** 重置文本格式元素 **/
+a {
+  text-decoration: none;
+}
+/** 重置表单元素 **/
+legend {
+  color: #000;
+}
+/* for ie6 */
+fieldset,
+img {
+  border: 0;
+}
+/* img 搭车：让a链接里的 img 无边框 */
+button,
+input,
+select,
+textarea {
+  font-size: 100%;
+  line-height: normal;
+}
+/* 使得表单元素在 ie 下能继承字体大小 */
+/** 重置表格元素 **/
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+input[type="button"],
+input[type="submit"],
+input[type="reset"] {
+  cursor: pointer;
+}
+/* ie6 7 8(q) bug  */
+iframe {
+  display: block;
+}
+/* 清浮动 */
+.clearfix:after {
+  visibility: hidden;
+  display: block;
+  font-size: 0;
+  content: " ";
+  clear: both;
+  height: 0;
+}
+.clearfix {
+  zoom: 1;
+  /* for IE6 IE7 */
+
+}
+ select {
+  /*很关键：将默认的select选择框样式清除*/
+  appearance:none;
+  -moz-appearance:none;
+  -webkit-appearance:none;
+
+  /*在选择框的最右侧中间显示小箭头图片*/
+  background: url("http://ourjs.github.io/static/2015/arrow.png") no-repeat scroll right center transparent;
+
+
+  /*为下拉小箭头留出一点位置，避免被文字覆盖*/
+  padding-right: 14px;
+}
+
+
+/*清除ie的默认选择框样式清除，隐藏下拉箭头*/
+select::-ms-expand { display: none; }

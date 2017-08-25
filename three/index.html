@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <style>canvas { width: 100%; height: 100% ;}</style>
+    <script type="text/javascript" src='three.min.js'></script>
+</head>
+<body>
+    <script>
+        //场景
+        var scene = new THREE.Scene();
+        //相机
+        var camera = new THREE.PerspectiveCamera(75, window.innerWidth/window.innerHeight, 0.1, 1000);
+        //渲染器
+        var renderer = new THREE.WebGLRenderer();
+        
+        renderer.setSize(window.innerWidth, window.innerHeight);// 设置渲染器的大小为窗口的内宽度，也就是内容区的宽度
+        
+        document.body.appendChild(renderer.domElement);
+        //立方体（X,Y,Z）
+        var geometry = new THREE.CubeGeometry(1,1,1);
+        var material = new THREE.MeshBasicMaterial({color: 0x00ff00});
+        var cube = new THREE.Mesh(geometry, material); scene.add(cube);
+        camera.position.z = 5;
+
+        function render() {
+            requestAnimationFrame(render);//执行一次参数中的函数
+            cube.rotation.x += 0.1;
+            cube.rotation.y += 0.1;
+            renderer.render(scene, camera);
+        }
+        render();
+
+
+        // var scene = new THREE.Scene();
+        // var camera = new THREE.PerspectiveCamera()
+    </script>
+</body>
+</html>

@@ -8,6 +8,7 @@
     </body>
 </html>
 <script type="text/javascript">
+/*---------------------------------查看数组元素出现次数---------------------------*/
     var arr = ["aa","bb","aa","nn","pp","pp","aa"];
     var custormNum = function (number) {
         var SortNum = number.sort();
@@ -26,4 +27,42 @@
     for(var i in sort){
         console.log("单词："+i+"出现了"+sort[i]+"次");
     }
+
+/*----------------------------数组的API-----------------------*/
+document.write("/*-------------------------------数组----------------------*/<br>")
+var arr1 = ["d","e","o","k","p","d","r"];
+    document.write(arr1.pop()+"</br>");//删除数组最后一项，返回删除的值
+    document.write(arr1.shift()+"<br>");//和pop对立
+    document.write(arr1.unshift("t")+"</br>");//最前端添加一个值，返回添加后的长度
+    document.write(arr1.push("k")+"<br>");//和unshift对立
+    document.write(arr1.join("/")+"<br>");//数组拼接成字符串
+    document.write(arr1.slice(3,5)+"<br>");//不包含5，不改变数组
+    document.write(arr1.splice(3,3,"bbbbb")+"<br>");//splice(a,b,c); 方法：从索引a开始截取b个元素，并用c替换截取的元素，并改变原来的数组，如果只有一个参数，表示从这个索引开始截取到末尾
+    document.write(arr1.sort()+"<br>");//排序
+    document.write(arr1.reverse()+"<br>");//倒序
+    // document.write(arr1.every(function(ele){
+    //     ele=="bbbbb";
+    // }))//数组里是要有一个元素不等于bbbbb就返回false
+    var arr2 = [4,5,7,8,9,4,5]
+    document.write(eval(arr2.join("+"))+"<br>");//如果数组中的每一项都是数字的话，用这个方法可以求数组中的数字之和
+    document.write(arr1.concat(arr2)+"<br>");//拼接
+    console.log(arr1);
+   
+/*-------------------------------字符串----------------------*/
+document.write("/*-------------------------------字符串----------------------*/<br>")
+var str = " hxvj hxfk   jhbv kfjdhbv kfg ";
+    document.write(str.charAt(6)+"<br>");//返回指定下标的字符串;
+
+    //substr(a,c); 方法： 从索引a开始截取c个元素
+    document.write(str.trim()+"<br>");
+    //用正则去掉全部空格
+    var reg = /\s+/g;
+        document.write(str.replace(reg,'')+"<br>");
+
+    document.write(str.search("j")+"<br>");//返回检测到的索引
+
+    document.write(str.match("hjk")+"<br>");//返回找到的字符串，没有返回null
+    var str1 = "hgj h gkg jh j"
+    console.log(str1.split("h"));//分割字符串
+    /*http://www.cnblogs.com/waimongkey/p/6582536.html*/
 </script>

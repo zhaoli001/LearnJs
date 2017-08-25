@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>波浪效果</title>
+        <style type="text/css">
+            /* .wave {
+              position: relative;
+              width: 200px;
+              height: 200px;
+              background-color: #76daff;
+              border-radius: 45%; }
+              .wave::before, .wave::after {
+                content: "";
+                position: absolute;
+                width: 400px;
+                height: 400px;
+                top: 0;
+                left: 50%;
+                background-color: rgba(255, 255, 255, 0.4);
+                border-radius: 45%;
+                transform: translate(-50%, -70%) rotate(0);
+                animation: rotate 6s linear infinite;
+                z-index: 10; }
+              .wave::after {
+                border-radius: 47%;
+                background-color: rgba(255, 255, 255, 0.9);
+                transform: translate(-50%, -70%) rotate(0);
+                animation: rotate 10s linear -5s infinite;
+                z-index: 20; }
+            
+            @keyframes rotate {
+              50% {
+                transform: translate(-50%, -73%) rotate(180deg); }
+              100% {
+                transform: translate(-50%, -70%) rotate(360deg); } }
+             */
+            
+
+
+
+.container{
+    width: 500px;
+    height: 500px;
+    background:rgb(118, 218, 255);
+    margin: 100px auto;
+    position:relative;
+    overflow:hidden;
+}
+.wave{
+    width: 1000px;
+    height: 1000px;  
+    background:#fff;
+    border-radius:40%;
+    animation: rotate 10s linear infinite;
+    position:absolute;
+    top:-550px;
+    left:-250px;
+}
+
+
+@keyframes rotate{
+    50%{
+       -webkit-transform:rotateZ(180deg); 
+    }
+    100%{
+        -webkit-transform:rotateZ(360deg);
+    }
+}
+
+
+.box{
+    width: 100px;
+    height: 50px;
+    background:red;
+    transition: transform 10s;
+}
+.box:hover{
+    -webkit-transform: translateX(200px);
+       -moz-transform: translateX(200px);
+        -ms-transform: translateX(200px);
+         -o-transform: translateX(200px);
+            transform: translateX(200px);
+}
+
+
+
+
+
+        </style> 
+    </head>
+
+    <body>
+
+<!-- svg -->
+<!-- 
+<svg width="200px" height="200px" version="1.1" xmlns="http://www.w3.org/2000/svg">
+    <text class="liquidFillGaugeText" text-anchor="middle" font-size="42px" transform="translate(100,120)" style="fill: #000">50.0%</text>
+    Wave
+    <g id="wave">
+        <path id="wave-2" fill="rgba(154, 205, 50, .8)" d="M 0 100 C 133.633 85.12 51.54 116.327 200 100 A 95 95 0 0 1 0 100 Z">
+        <path id="wave-2" fill="rgba(154, 205, 50, .8)" d="M 0 100 C 133.633 85.12 51.54 116.327 200 100 A 95 95 0 0 1 0 100 Z">
+        <animate dur="5s" repeatCount="indefinite" attributeName="d" attributeType="XML" values="M0 100 C90 28, 92 179, 200 100 A95 95 0 0 1 0 100 Z;
+                                    M0 100 C145 100, 41 100, 200 100 A95 95 0 0 1 0 100 Z;
+                                    M0 100 C90 28, 92 179, 200 100 A95 95 0 0 1 0 100 Z"></animate>
+        </path>
+    </g>
+    <circle cx="100" cy="100" r="80" stroke-width="10" stroke="white" fill="transparent"></circle>
+    <circle cx="100" cy="100" r="90" stroke-width="20" stroke="yellowgreen" fill="none" class="percentage-pie-svg"></circle>
+</svg> -->
+
+
+<div class="container">
+    <div class="wave"></div>
+</div>
+<div class="box"></div>
+
+
+
+
+    </body>
+
+
+    <script type="text/javascript">
+//借助贝塞尔曲线
+
+
+    </script>
+</html>

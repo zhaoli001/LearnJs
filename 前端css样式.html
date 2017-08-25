@@ -2,16 +2,67 @@
 <html lang="en">
     <head>
         <meta charset="utf-8">
+        <link rel="stylesheet" type="text/css" href="common.css" />
     </head>
     <style type="text/css">
-        .wapper{
+        /*.wapper{
             width: 500px;
             height: 800px;
             background:url(icon.png) no-repeat;
             background-size:contain;
+        }*/
+        /* .content{
+            width: 300px;
+            height: 50px;
+            border:1px solid green;
+            border-radius:25px;
+            position:relative;
+            margin:100px auto;
         }
+        .content:after{
+            content:"";
+            position:absolute;
+            right:30px;
+            width: 0px;
+            height: 0px;
+            border:10px solid #fff;  
+            border-top:10px solid #000;
+            -webkit-transform: rotateY(180deg);
+               -moz-transform: rotateY(180deg);
+                -ms-transform: rotateY(180deg);
+                 -o-transform: rotateY(180deg);
+                    transform: rotateY(180deg);
+        }
+        .content.on:after{
+            -webkit-transform: rotateZ(180deg);
+               -moz-transform: rotateZ(180deg);
+                -ms-transform: rotateZ(180deg);
+                 -o-transform: rotateZ(180deg);
+                    transform: rotateZ(180deg);
+        }
+        .content.on{
+            transition:transform 9s ease-out;
+        } */
     </style>
+    
+    <body>
+        <!-- <div class="wapper">
+            
+        </div> -->
+        <div class="content">
+
+        </div>
+        <select name="" id=""><option value="">jgkdfuvhjdsfv hfgvjbkdfv</option></select>
+            <input type="text" />
+    </body>
     <script type="text/javascript">
+
+    document.querySelectorAll(".content")[0].onclick = function(){
+        this.className = "on";
+    }
+
+
+
     function pp(){
       var p = new Promise(function(resolve,reject){
             setTimeout(function(){
@@ -42,9 +93,4 @@
     })
         
     </script>
-    <body>
-        <div class="wapper">
-            
-        </div>
-    </body>
 </html>

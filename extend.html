@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>扩展</title>
+        <script type="text/javascript" src="jquery.min.js"></script>
+    </head>
+    <body>
+
+
+    <div>
+        <input type="text" id="pp"/>
+    </div>
+
+    <script type="text/javascript">
+    $(function () {
+
+
+        $.fn.extend({ 
+            ppp:function(){ 
+                $(this).click(function(){ 
+                    alert($(this).val()); 
+                }); 
+            } 
+        }); 
+
+       $("#pp").ppp(); 
+
+    })
+    </script>
+        
+    </body>
+</html>

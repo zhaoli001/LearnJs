@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>es6变量的解构赋值</title>
+    </head>
+    <body>
+        <input type="text" id="input"/>
+
+    </body>
+    <script type="text/javascript">
+/*解构赋值*/
+/*class Animal {
+    constructor(){
+        this.type = 'animal';
+        console.log()
+    }
+    says(say){
+        console.log(this.type + ' says ' + say)
+    }
+}
+
+let animal = new Animal()
+animal.says('hello')
+animal*/
+
+// websocket();
+// function websocket(){
+//     if("WebSocket" in window){
+//         // alert("支持！");
+//         var ws = new WebSocket(url);
+//         //链接
+//         ws.onopen = function(){
+//             ws.send("send data");
+//             alert("")
+//         }
+
+//         //接收
+//         ws.onmessage = function (req){
+//             var msg = req.data;
+//             //已接收
+//         }
+
+//         //关闭
+//         ws.onclose = function(){
+//             //已关闭
+//         }
+//     }else{
+//         alert("不支持！");
+//     }
+// }
+
+
+
+
+var reg = /^(?![0-9]+$)(?![a-z]+$)(?![A-Z]+$)(?!([^(0-9a-zA-Z)]|[\(\)])+$)([^(0-9a-zA-Z)]|[\(\)]|[a-z]|[A-Z]|[0-9]){6,}$/;
+
+
+var text = document.querySelector("#input");
+
+
+text.onblur = function(){
+    var value = text.value;
+    if(reg.test(value)){
+        console.log(1);
+    }else{
+        console.log(2);
+    }
+
+}
+
+
+var p1 = new Promise(function (resolve) {
+    setTimeout(function () {
+        resolve("Hello");
+    }, 3000);
+});
+
+var p2 = new Promise(function (resolve) {
+    setTimeout(function () {
+        resolve("World");
+    }, 1000);
+});
+
+Promise.all([p1, p2]).then(function (result) {
+    console.log(p1);
+    console.log(result); // ["Hello", "World"]
+});
+
+
+
+
+
+
+
+
+
+    </script>
+</html>

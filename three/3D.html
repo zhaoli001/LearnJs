@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>web3gl学习</title>
+        <style type="text/css">
+            .wapper{
+                width: 500px;
+                height: 500px;
+                magin:0 auto;
+            }
+        </style>
+        <script type="text/javascript" src="three.min.js"></script>
+        <script type="text/javascript" src="../jquery.min.js"></script>
+    </head>
+    <body>
+    <div class="wapper">
+        
+    </div>
+    </body>
+    <script type="text/javascript">
+/*
+场景
+相机
+渲染器
+ */
+
+
+// var scene = new THREE.Scene();//场景
+// var camera = new THREE.PerspectiveCamera(75,window.innerWidth/window.innerHeight,0.1,1000);//相机
+// var renderer = new THREE.WebGLRenderer();//渲染器
+//     renderder.setSize(window.innerWidth,window.innerHeight);//设置渲染器的大小；
+//     document.querySelectorAll(".wapper")[0].appendChild(renderer.domElement);//挂载
+
+
+//     THREE.Vector3 = function(x,y,z){
+//         this.x = x || 0;
+//         this.y = y || 0;
+//         this.z = z || 0;
+//     }
+var renderer;//渲染器
+function initThree(){
+    width = document.querySelectorAll(".wapper")[0].clientWidth;
+    height = document.querySelectorAll(".wapper")[0].clientHeight;
+    renderer = new THREE.WebGLRenderer({
+        antialias:true
+    });
+    renderer.setSize(width,height);
+    document.querySelectorAll(".wapper")[0].appendChild(renderer.domElement);
+    renderer.setClearColor(0xffffff,1.0);
+
+}
+
+
+var camera;//相机
+function initCamera(){
+    camera = new THREE.PerspectiveCamera(45,width/height,1,10000);
+    camera.position.x = 0;
+    camera.position.y = 1000;
+    camera.position.z = 0;
+    camera.up.x = 0;
+    camera.up.y = 0;
+    camera.up.z = 1;
+    camera.lookAt({
+        x:0,
+        y:0,
+        z:0
+    })
+}
+
+var scene;
+function initScene(){
+    scene = new THREE.Scene();
+}
+
+
+var light;
+function initLight(){
+    light = new THREE.DirectionalLight(0xff0000,1.0,0);
+    light.position.set(100,100,200);
+    scene.add(light);
+}
+
+var cube;
+function initObject(){
+    var geometry = new THREE.Geometry();//几何体
+    var material = new THREE.LineBasicMaterial({vertexColors:true,fog:true});//定义线条
+    var color1 = new THREE.Color(0x444444),
+        color2 = new THREE.Color(0xff0000);
+
+    var p1 = new THREE.Vector3(100,0,100);
+    var p2 = new THREE.Vector3(100,0,-100);
+    geometry.vertices.push(p1);//利用vertices来存放点
+    geometry.vertices.push(p2);
+    geometry.colors.push(color1,color2);
+
+    var line = new THREE.Line(geometry,material,THREE.LinePieces);
+    scene.add(line);
+
+}
+
+
+function threeStart(){
+    initThree();
+    initCamera(); 
+    initScene();
+    initLight();
+    initObject();
+    renderer.clear();
+    renderer.render(scene,camera);
+}
+threeStart();
+    </script>
+</html>

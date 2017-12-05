@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+    </head>
+    <body>
+    <div>1</div>
+    <div>2</div>
+    <div>3</div>
+    </body>
+    <script type="text/javascript">
+/*let:1、只在代码块内有效
+    2、没有声明之前不能使用
+    3、let和const都有封闭作用域（TDZ）
+    4、不能重复声明（传过的参数也不能声明成变量）
+    5、块级作用域(利用函数表达式来声明函数内部函数)；
+*/
+
+    var a = [];
+    for(let i=0; i<10; i++){//每一轮都是新的变量，javasrcipt会记住上一轮的值；
+        a[i] = function () {
+            console.log(i);
+        }
+    }
+    a[3]();//3
+
+    //
+    // var tmp = 111;
+    // if(true){
+    //     let tmp=tmp+1
+    //     console.log(tmp);
+    // }
+
+    console.log(typeof pppp);
+
+    function bar (x=2,y=x) {
+        return [x,y];
+    }
+    console.log(bar());
+
+    // function p(tmp){
+    //     let tmp =0;
+    //     var tmp = 2;
+    //     console.log(tmp);
+    // }
+    // p(3);
+    // 
+   /* var tmp = 1;//会覆盖
+    function e(){
+        console.log(tmp);
+        if(true){
+            var tmp = 0;
+        }
+    }
+    e()*/
+
+   
+    function o(){
+        let p="ooo"; 
+        if(true){
+            let p="uuuu";
+        }
+        console.log(p);
+
+    }
+    o();
+
+    // function f(){console.log("hhhhhhh")};
+    // (function(){
+    //     function f(){console.log("jjjj");}
+    //     if(true){
+
+    //     }
+    //     f();
+    // }())
+
+//express基于node.js快速搭建一个web应用网站，塔石建立在node的http模块上的。
+function fn1(){
+    let a = "secrect";
+    let f = function () {
+        return a;
+    }
+
+    console.log(f());
+}
+
+
+fn1();
+
+
+
+/*
+const 1、声明常量，不能改变
+        2、块级作用域
+        3、声明后才能使用；
+        4、不能重复声明（传过的参数也不能声明成变量）
+ */
+
+// const pi = 3.3;
+//     // pi = 4.4;
+//     console.log(pi);
+//     if(true){
+//         const p=0;
+//     }
+
+//     console.log(p);
+
+/*
+数组解构赋值：模式匹配
+ */
+let [n,h,g] = [2,3,4];
+
+console.log(g);
+
+let {toString:s} = 123;
+s ===Number.prototype.toString;
+console.log(s);
+
+
+var text = String.fromCodePoint(0x20BB7);
+
+for (let i = 0; i < text.length; i++) {
+  console.log(text[i]);
+}
+
+for (let i of text) {
+  console.log(i);
+}
+
+
+function push(array,...items){
+    array.push(...items)
+    return array;
+}
+function add(x,y){
+    return x+y;
+}
+var numbers = [4,38];
+
+console.log(push(numbers,3,4,3,4,5,6));
+
+function gun(...args){
+    console.log(args);
+}
+
+gun([],4,5,6);
+console.log(...[],5,4,3)
+var arr = [3,2,4,5,5];
+var arr1 = [4,3,2]
+console.log(Math.max.apply(null,arr))
+console.log(Math.max(...arr));
+console.log(Math.max(3,2,4,5,5));
+var k = arr.push(...arr1);
+
+
+console.log(new Date(...[2015,03,02,4,3]));
+
+
+/*
+数组：
+    push：arr1.push(...arr2);
+    合并：[...arr1,...arr2,.......];
+    字符串转化为数组：[..."hello"],
+                    涉及到32位的Unicode的先用扩转运算符改写；
+
+ */
+
+
+
+console.log([...[1,2,3],...[3,4,5]]);
+var hh = [3,2,1];
+console.log(new Date(...hh));
+console.log([..."hello"]);
+console.log([...'x\uD83D\uDE80y'].reverse().join(''));
+
+var nodeList = document.querySelectorAll('div');
+var array = [...nodeList];
+console.log(typeof array);
+
+ 
+
+
+ /*
+ set：是构造函数，类似于数组，成员都是唯一的，
+    new Set()中添加成员的方法是 add();
+    去除数组的重复成员[...new Set(array)];
+        数组去重：Array.from(new Set([array]));
+    在Set内部NaN是相等的；{}始终不是相等的；
+    属性：
+    Set.prototype.constructor：构造函数，默认就是Set函数。
+    Set.prototype.size：返回Set实例的成员总数。
+    方法：
+        add(value)：添加某个值，返回Set结构本身。
+        delete(value)：删除某个值，返回一个布尔值，表示删除是否成功。
+        has(value)：返回一个布尔值，表示该值是否为Set的成员。
+        clear()：清除所有成员，没有返回值。
+        
+        keys()：返回键名的遍历器
+        values()：返回键值的遍历器
+        entries()：返回键值对的遍历器
+        forEach()：使用回调函数遍历每个成员(处理函数)
+
+
+    Array.from()将set对象转化为数组；
+
+    map()和filter();
+
+    不能直接改变set结构，利用Array.from改变和利用Set去映射出一个新的结构；
+
+
+  */
+const rrrrrr = new Set();
+[2,3,4,4,5,7].forEach((x)=>{
+    rrrrrr.add(x);
+})
+console.log(rrrrrr);
+
+const pppppppp = new Set([1,2,2,2,2,2,3,4,5]);
+console.log([...pppppppp]);
+
+function dedupe(array){
+    return Array.from(new Set(array));
+}
+
+console.log(dedupe([2,3,4,4,4,4,4,4]))
+
+let set = new Set();
+let b = NaN;
+let r = NaN;
+set.add(r);
+set.add(b);
+console.log(set.size);
+
+
+
+let set2 = new Set();
+let e = {};
+let w = {};
+set2.add(e);
+set2.add(w);
+console.log(set2.size);
+
+
+pppppppp.delete(2);
+console.log(pppppppp.has(5));
+ 
+
+ const items = new Set([1,2,3,3,3,3,3,3,3,4,5]);
+console.log(items);
+console.log(Array.from(items));
+
+
+
+let newArray = new Set([2,3,4,"pp","oo"])
+
+// for(let item of newArray){
+//     console.log(item);
+// }
+
+newArray.forEach((v,k)=>{
+    console.log(k);
+})
+
+
+let setArray1 = new Set([1,2,3,4]);
+    setArray1 = new Set([...setArray1].map(x=>x))
+    console.log(setArray1);
+let setArray2 = new Set([1,2,3,4,5]);
+
+//并集
+    console.log(new Set([...setArray1,...setArray2]));
+//交集
+    console.log(new Set([...setArray1].filter(x=>setArray2.has(x))));
+//差集
+    console.log(new Set([...setArray2].filter(x=>!setArray1.has(x))))
+//改变结构
+    console.log(setArray2);
+    setArray2 = new Set(Array.from(setArray2,val=>val*2))
+    console.log(setArray2);
+
+/*
+new Map()
+    添加值：set(键，值);
+    读取：get(键);
+
+ */
+//利用对象作为键；
+const obj1 = new Map();
+const obj2 = {p:"hello world"};
+    obj1.set(obj2,"content");
+    console.log(obj1.get(obj2));
+//
+const map1 = new Map([
+       [ "name","张三"],
+        ["title","ruubish"]
+    ])
+
+console.log(map1);
+
+const set1 = new Set([
+        ["foo",1],
+        ["foo2",2]
+    ]);
+console.log(set1);
+const map2 = new Map(set1);
+console.log(map2);
+
+// map1.set(["author","zhuangsan"])
+// console.log(map1.get("author"));
+
+
+
+
+
+
+
+
+    </script>
+</html>

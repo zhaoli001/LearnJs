@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <style type="text/css">
+            *{
+                padding:0;
+                margin:0;
+            }
+            .wapper{
+                width: 100%;
+                height: 100%;
+            }
+
+            .top{
+                width: 100%;
+                height: 150px;
+                background: pink;
+                position:fixed;
+                left:0;
+                top:0;
+                transition: height .3s ease-in-out;
+            }
+
+            .down{
+                width: 100%;
+                height: 1800px;
+                background:#ccc;
+                transition: margin-top .3s ease-in-out;
+            }
+    
+        </style>
+        <script type="text/javascript" src='jquery.min.js'></script>
+    </head>
+    <body>
+
+
+<div class="wapper">
+    <div class="top">
+        
+    </div>
+    <div class="down">
+        脚本之家服务器常用软件源市场
+            手机版投稿中心关注微信 快捷导航
+            脚本之家 
+            网站首页网页制作网络编程脚本专栏脚本下载数据库CMS教程电子书籍平面设计媒体动画
+            其它
+
+              console.log(new Date());
+              throw new Error('App is error from inner!');
+            },10*1000);
+
+
+             
+            Thu Sep 26 2013 16:15:33 GMT+0800 (CST)
+            Express server listening on port 3000
+            Thu Sep 26 2013 16:15:43 GMT+0800 (CST)
+
+
+            node.js 文件重命名 2017-03-03
+            nodejs 实现钉钉ISV接入的加密解密方法
+            nodejs 实现钉钉ISV接入的加密解密方法
+
+            nodejs 加密 解密 2017-01-01
+            Node.js如何响应Ajax的POST请求并且保存为JSON文件详解
+            Node.js如何响应Ajax的POST请求并且保存为JSON文件详解
+
+            node.js post请求 ajax 2017-03-03
+            Nodejs 获取时间加手机标识的32位标识实现代码
+            Nodejs 获取时间加手机标识的32位标识实现代码
+
+            nodejs 获取时间 2017-03-03
+            nodejs调用cmd命令实现复制目录
+            nodejs调用cmd命令实现复制目录
+
+            nodejs调用cmd命令 2015-05-05
+            利用Node.JS实现邮件发送功能
+            利用Node.JS实现邮件发送功能
+
+            node.js 发送 邮件 2016-10-10
+            详解HTTPS 的原理和 NodeJS 的实现
+            详解HTTPS 的原理和 NodeJS 的实现
+
+            node 支持 https 2017-07-07
+            Angularjs---项目搭建图文教程
+            Angularjs---项目搭建图文教程
+
+            angularjs 搭建 项目 2016-07-07
+            Node.js通过身份证号验证年龄、出生日期与性别方法示例
+            Node.js通过身份证号验证年龄、出生日期与性别方法示例
+
+            node.js 身份证验证 2017-03-03
+            从零开始学习Node.js系列教程二：文本提交与显示方法
+            从零开始学习Node.js系列教程二：文本提交与显示方法
+
+            Node.js 文本 2017-04-04
+
+            最新评论
+            评论(0人参与，0条评论)
+
+
+            来说两句吧...
+            发布
+            微博登录
+            QQ登录
+            手机登录
+            还没有评论，快来抢沙发吧！
+            Powered by 畅言
+
+             
+            大家感兴趣的内容
+            1一行命令搞定node.js 版本升级
+            2Node.js（安装，启动，测试）
+            3卸载安装Node.js与npm过程详解
+            4nodejs npm install全局安装和本
+            5node.js+Ajax实现获取HTTP服务器
+            6NodeJS学习笔记之FS文件模块
+            7nodejs文件操作模块FS（File Sys
+            8Nodejs中调用系统命令、Shell脚本
+            9NodeJS学习笔记之Http模块
+            10NodeJs基本语法和类型
+
+             
+
+
+
+            最近更新的内容
+            node.js中的fs.fstatSync方法使用说明
+            完美解决node.js中使用https请求报CERT_U
+            nodejs动态创建二维码的方法
+            node通过npm写一个cli命令行工具
+            浅析nodejs实现Websocket的数据接收与发送
+            nodejs利用ajax实现网页无刷新上传图片实
+            Node.js学习入门
+            connect中间件session、cookie的使用方法
+            基于node.js之调试器详解
+            nodejs基于mssql模块连接sqlserver数据库
+            众生网络
+            品牌服务器租用
+            集思网络
+            VPS主机
+            枫信科技
+            IDC服务商
+            常用在线小工具
+            CSS代码工具
+            JavaScript代码格式化工具
+            在线XML格式化/压缩工具
+            php代码在线格式化美化工具
+            sql代码在线格式化美化工具
+            在线HTML转义/反转义工具
+            在线JSON代码检验/检验/美化/格式化
+            JavaScript正则在线测试工具
+            在线生成二维码工具(加强版)
+            更多在线工具
+
+            云服务器
+
+            关于我们 - 广告合作 - 联系我们 - 免责声明 - 网站地图 - 投诉建议 - 在线投稿
+
+             苏公网安备 32031102000137号  苏ICP备14036222号
+
+            ©CopyRight 2006-2018 JB51.Net Inc All Rights Reserved. 脚本之家 版权所有
+    </div>
+</div>
+
+
+<script type="text/javascript">
+    
+
+//浏览器的滚动事件
+    $(window).on("scroll",function(){
+
+
+        //获取滚动条的位置
+        var scrollLen = document.documentElement.scrollTop || document.body.scrollTop;
+
+        if(scrollLen>0){
+            $(".top").css("height","10px");
+            $(".down").css("margin-top","10px");
+        }else{
+            $(".top").css("height","150px");
+            $(".down").css("margin-top","150px");
+        }
+        
+    })
+
+</script>
+
+
+
+
+    </body>
+</html>

@@ -1,0 +1,266 @@
+<!doctype html>  
+<html lang="en">  
+ <head>  
+  <meta charset="UTF-8">  
+  <meta name="Generator" content="EditPlus®">  
+  <meta name="Author" content="">  
+  <meta name="Keywords" content="">  
+  <meta name="Description" content="">  
+  <title>Document</title>  
+  <style type="text/css">  
+    body{  
+       margin:0px;  
+    }  
+    table{  
+        width:auto;  
+        margin:0px;  
+        font:Georgia 11px;  
+        color:#333333;  
+        text-align:center;  
+        border-collapse:collapse;   
+    }  
+    table td{  
+        border:1px solid #f00;  
+        width:100px;  
+        height:30px;  
+        padding:15px;  
+    }   
+ </style>  
+  
+ <script>  
+    
+    var initLeft;  
+    var initTop;   
+    var isFixColumn = false;  
+    var isFixRow = false;  
+    /**  
+     * added by 王伟 20160612  
+     * param:  
+     *    isFixC: 是否固定列 true/false  
+     *    isFixR: 是否固定行 true/false  
+     *    initTableId： 原始表ID  
+     */  
+    function showFix(isFixC,isFixR,initTableId){    
+        //是否显示固定列或者固定行  
+        isFixColumn = isFixC;  
+        isFixRow = isFixR;  
+        if(checkScrollBar('h')){  
+             document.getElementById("fixedColumnDiv").style.display="block";  
+        }  
+        if(checkScrollBar('y')){  
+             document.getElementById("fixedRowDiv").style.display="block";  
+        }  
+        //获取原始表的具体位置  
+        var initTable = document.getElementById(initTableId);  
+        initLeft = getPosition(initTable,'left');  
+        initTop = getPosition(initTable,'top'); //如果div和table 之间有margin，则减去响应数值  
+  
+        if(checkScrollBar('h')){  
+            var fixedColumnDiv = document.getElementById("fixedColumnDiv");  
+            fixedColumnDiv.style.position='absolute';   
+            fixedColumnDiv.style.left = initLeft;  
+            fixedColumnDiv.style.top = initTop;   
+        }   
+        if(checkScrollBar('y')){  
+            var fixedRowDiv = document.getElementById("fixedRowDiv");  
+            fixedRowDiv.style.position='absolute';   
+            fixedRowDiv.style.left = initLeft;  
+            fixedRowDiv.style.top = initTop;   
+        }  
+    }  
+  
+      
+    /**  
+     * 滚动时重新设置div层的位置   
+     */  
+    window.onscroll = function(){    
+          if(checkScrollBar('h')){    
+              var scrollLeft = document.documentElement.scrollLeft || document.body.scrollLeft;  
+              var fixedColumnDiv = document.getElementById("fixedColumnDiv");  
+              fixedColumnDiv.style.position='absolute';  
+              fixedColumnDiv.style.left = (initLeft+scrollLeft)+'px';  
+              fixedColumnDiv.style.top = initTop+'px';  
+          }  
+          if(checkScrollBar('y')){   
+              var scrollTop = document.documentElement.scrollTop || document.body.scrollTop;  
+              var fixedRowDiv = document.getElementById("fixedRowDiv");  
+              fixedRowDiv.style.position='absolute';  
+              fixedRowDiv.style.left = initLeft+'px';  
+              fixedRowDiv.style.top = (initTop+scrollTop)+'px';  
+          }  
+    }   
+   
+    /**  
+     * 获取元素的位置偏移量信息  
+     * param:  
+     *    left:获取左偏移量  
+     *    top: 获取上偏移量  
+     */  
+    function getPosition(obj,type){   
+        var topValue= 0,leftValue= 0;  
+        while(obj){    
+           leftValue+= obj.offsetLeft;  
+           topValue+= obj.offsetTop;   
+           obj= obj.offsetParent;     
+        }     
+        finalvalue = leftValue + "," + topValue;  
+        if(type == 'left'){  
+            return   leftValue;  
+        }else if(type == 'top'){  
+            return topValue;  
+        }else {  
+            return 0;  
+        }  
+    }   
+  
+    /**  
+     * 获取是否有滚动条  
+     * param： h: 判断是否有横向滚动条，y：判断是否有竖向滚动条  
+     * return：boolean， true：有，false：无  
+     */  
+    function checkScrollBar(type){   
+        //判断是否有滚动条，有滚动条才显示固定列层  
+        var visuals = getPageSize('visual');  
+        var reals = getPageSize('real');  
+        if(type == 'h' && isFixColumn){  
+            if(document.body.style.overflow!="hidden"  
+                && document.body.scroll!="no"  
+                    && reals[1] > visuals[1])  
+            {  
+                 return true;  
+            }else{   
+                 return false;  
+            }   
+        }  
+        if(type == 'y' && isFixRow){  
+            if(document.body.style.overflow!="hidden"  
+                && document.body.scroll!="no"  
+                    && reals[0] > visuals[0])  
+            {  
+                 return true;  
+            }else{   
+                 return false;  
+            }   
+        }  
+        return false;  
+    }  
+  
+    /**  
+     * 浏览器兼容的获取网页实际内容大小  
+     * param: type 获取大小类型（visual或real）  
+     * 参数值说明： visual： 获取网页课件区域高宽，real：网页内容真实宽高  
+     */  
+    function getPageSize(type) {       
+        //检测浏览器的渲染模式       
+        var body = (document.compatMode&&document.compatMode.toLowerCase() == "css1compat")?document.documentElement:document.body;  
+        var bodyOffsetWidth = 0;  
+        var bodyOffsetHeight = 0;  
+        var bodyScrollWidth = 0;  
+        var bodyScrollHeight = 0;  
+        var pageDimensions = [0, 0];  
+        pageDimensions[0] = body.clientHeight;  
+        pageDimensions[1] = body.clientWidth;  
+        if(type == 'visual'){  
+           return pageDimensions;  
+        }  
+        bodyOffsetWidth = body.offsetWidth;  
+        bodyOffsetHeight = body.offsetHeight;  
+        bodyScrollWidth = body.scrollWidth;  
+        bodyScrollHeight = body.scrollHeight;  
+        if (bodyOffsetHeight > pageDimensions[0]) {  
+            pageDimensions[0] = bodyOffsetHeight;  
+        }  
+        if (bodyOffsetWidth > pageDimensions[1]) {  
+            pageDimensions[1] = bodyOffsetWidth;  
+        }  
+        if (bodyScrollHeight > pageDimensions[0]) {  
+            pageDimensions[0] = bodyScrollHeight;  
+        }  
+        if (bodyScrollWidth > pageDimensions[1]) {  
+            pageDimensions[1] = bodyScrollWidth;  
+        }  
+        return pageDimensions;  
+    }  
+   
+ </script>  
+ </head>  
+ <body onload="showFix(true,false,'initTable');">  
+  <table id="initTable">  
+  <tr>  
+        <td>111</td><td>222</td><td>333</td><td>444</td><td>555</td><td>666</td>  
+        <td>777</td><td>888</td><td>999</td><td>000</td><td>aaa</td><td>bbb</td>  
+        <td>ccc</td><td>ddd</td><td>eee</td><td>fff</td><td>ggg</td><td>nnn</td>  
+        <td>bbb</td><td>ccc</td><td>www</td><td>eee</td><td>vvv</td><td>rrr</td>  
+  </tr>  
+  <tr>  
+        <td>111</td><td>222</td><td>333</td><td>444</td><td>555</td><td>666</td>  
+        <td>777</td><td>888</td><td>999</td><td>000</td><td>aaa</td><td>bbb</td>  
+        <td>ccc</td><td>ddd</td><td>eee</td><td>fff</td><td>ggg</td><td>nnn</td>  
+        <td>bbb</td><td>ccc</td><td>www</td><td>eee</td><td>vvv</td><td>rrr</td>  
+  </tr>  
+  <tr>  
+        <td>111</td><td>222</td><td>333</td><td>444</td><td>555</td><td>666</td>  
+        <td>777</td><td>888</td><td>999</td><td>000</td><td>aaa</td><td>bbb</td>  
+        <td>ccc</td><td>ddd</td><td>eee</td><td>fff</td><td>ggg</td><td>nnn</td>  
+        <td>bbb</td><td>ccc</td><td>www</td><td>eee</td><td>vvv</td><td>rrr</td>  
+  </tr>  
+  <tr>  
+        <td>111</td><td>222</td><td>333</td><td>444</td><td>555</td><td>666</td>  
+        <td>777</td><td>888</td><td>999</td><td>000</td><td>aaa</td><td>bbb</td>  
+        <td>ccc</td><td>ddd</td><td>eee</td><td>fff</td><td>ggg</td><td>nnn</td>  
+        <td>bbb</td><td>ccc</td><td>www</td><td>eee</td><td>vvv</td><td>rrr</td>  
+  </tr>  
+  <tr>  
+        <td>111</td><td>222</td><td>333</td><td>444</td><td>555</td><td>666</td>  
+        <td>777</td><td>888</td><td>999</td><td>000</td><td>aaa</td><td>bbb</td>  
+        <td>ccc</td><td>ddd</td><td>eee</td><td>fff</td><td>ggg</td><td>nnn</td>  
+        <td>bbb</td><td>ccc</td><td>www</td><td>eee</td><td>vvv</td><td>rrr</td>  
+  </tr>  
+  <tr>  
+        <td>111</td><td>222</td><td>333</td><td>444</td><td>555</td><td>666</td>  
+        <td>777</td><td>888</td><td>999</td><td>000</td><td>aaa</td><td>bbb</td>  
+        <td>ccc</td><td>ddd</td><td>eee</td><td>fff</td><td>ggg</td><td>nnn</td>  
+        <td>bbb</td><td>ccc</td><td>www</td><td>eee</td><td>vvv</td><td>rrr</td>  
+  </tr>  
+  <tr>  
+        <td>111</td><td>222</td><td>333</td><td>444</td><td>555</td><td>666</td>  
+        <td>777</td><td>888</td><td>999</td><td>000</td><td>aaa</td><td>bbb</td>  
+        <td>ccc</td><td>ddd</td><td>eee</td><td>fff</td><td>ggg</td><td>nnn</td>  
+        <td>bbb</td><td>ccc</td><td>www</td><td>eee</td><td>vvv</td><td>rrr</td>  
+  </tr>   
+  <tr>  
+        <td>111</td><td>222</td><td>333</td><td>444</td><td>555</td><td>666</td>  
+        <td>777</td><td>888</td><td>999</td><td>000</td><td>aaa</td><td>bbb</td>  
+        <td>ccc</td><td>ddd</td><td>eee</td><td>fff</td><td>ggg</td><td>nnn</td>  
+        <td>bbb</td><td>ccc</td><td>www</td><td>eee</td><td>vvv</td><td>rrr</td>  
+  </tr>   
+  </table>  
+  
+  <!-- 复制的固定头两列 -->  
+  <div id="fixedColumnDiv" align="center" style="width:100px;position:Fixed;display:none;">   
+  <table>  
+    <tr bgcolor="red"><td>111</td><td>222</td></tr>  
+    <tr bgcolor="red"><td>111</td><td>222</td></tr>  
+    <tr bgcolor="red"><td>111</td><td>222</td></tr>  
+    <tr bgcolor="red"><td>111</td><td>222</td></tr>  
+    <tr bgcolor="red"><td>111</td><td>222</td></tr>  
+    <tr bgcolor="red"><td>111</td><td>222</td></tr>  
+    <tr bgcolor="red"><td>111</td><td>222</td></tr>  
+    <tr bgcolor="red"><td>111</td><td>222</td></tr>   
+  </table>  
+  </div>  
+  
+  <!-- 复制的固定头一行 -->  
+  <div id="fixedRowDiv" align="center" style="height:auto;position:Fixed;display:none;">   
+  <table>  
+    <tr bgcolor="blue">  
+        <td>111</td><td>222</td><td>333</td><td>444</td><td>555</td><td>666</td>  
+        <td>777</td><td>888</td><td>999</td><td>000</td><td>aaa</td><td>bbb</td>  
+        <td>ccc</td><td>ddd</td><td>eee</td><td>fff</td><td>ggg</td><td>nnn</td>  
+        <td>bbb</td><td>ccc</td><td>www</td><td>eee</td><td>vvv</td><td>rrr</td>  
+    </tr>  
+  </table>  
+  </div>  
+  
+ </body>  
+</html>  
